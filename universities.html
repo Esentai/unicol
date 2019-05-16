@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Universities</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/universities.css" />
+    <script
+      src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"
+      type="text/javascript"
+    ></script>
+  </head>
+  <body>
+    <div id="root">
+      <nav class="navigation">
+        <div class="container navigation_content">
+          <a href="./"><img src="images/MainLogo.png" height="55" alt=""/></a>
+          <a href="#!" class="navigation_content_title">Абитуриенту</a>
+          <div class="dropdown language">
+            <button
+              class="btn dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {{ lang }}
+              <img class="languages_icon" v-bind:src="lang_img" alt="" />
+            </button>
+            <div class="dropdown-menu">
+              <button
+                v-show="lang != 'Qaz'"
+                v-on:click="changeLanguage('qaz')"
+                class="dropdown-item"
+                href="#"
+              >
+                Qaz
+                <img class="languages_icon" src="images/lang/qaz.png" alt="" />
+              </button>
+              <button
+                v-show="lang != 'Eng'"
+                v-on:click="changeLanguage('eng')"
+                class="dropdown-item"
+                href="#"
+              >
+                Eng
+                <img class="languages_icon" src="images/lang/eng.png" alt="" />
+              </button>
+              <button
+                v-show="lang != 'Рус'"
+                v-on:click="changeLanguage('rus')"
+                class="dropdown-item"
+                href="#"
+              >
+                Рус
+                <img class="languages_icon" src="images/lang/rus.png" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="map" style="width: 100%; height: 100vh"></div>
+      <div class="filter">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Выберите город</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option v-for="city in cities" v-bind:value="city.Name">
+              {{ city.Name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Специальность</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option
+              v-for="specialtyName in specialty"
+              v-bind:value="specialtyName.name_rus"
+            >
+              {{ specialtyName.name_rus }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Язык обучения</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>Казахский</option>
+            <option>Русский</option>
+            <option>Английский</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Цена</label>
+
+ 
+        <div class="wrapper">
+          <div class="range-slider">
+              <input type="text" class="js-range-slider" value="" />
+          </div>
+            <hr>
+          <div class="extra-controls form-inline">
+            <div class="form-group">
+              <input type="text" class="js-input-from form-control" value="0" />
+              <input type="text" class="js-input-to form-control" value="0" />
+          </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <label class="checkbox_container"
+          >Общежитие
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="checkbox_container"
+          >Военная кафедра
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+        <label class="checkbox_container"
+          >Гранты
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+        </div>
+      </div>
+    
+      <a class="vk" href="https://vk.com"><i class="fab fa-vk"></i></a>
+      <a class="insta" href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+      <a class="youtube" href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+    </div>
+    <script src="js/universities.js"></script>
+    <script src="js/priceRange.js"></script>
+  </body>
+</html>
