@@ -30,6 +30,19 @@ if ($action == 'read'){
 }
 
 
+if($action == 'newCity'){
+  $Name = $_POST['Name'];
+  $result = $conn->query("INSERT INTO `cities` (`Id`, `Name`) VALUES (NULL, '$Name')");
+  if ($result) {
+    $res['message'] = "User added successfully";
+  } else{
+    $res['error'] = true;
+    $res['message'] = 'Could not insert user';
+  }
+  $res['user'] = $user;
+}
+
+
 if ($action == 'newSpecialty'){
   $name_kaz = $_POST['name_kaz'];
   $name_rus = $_POST['name_rus'];
@@ -105,9 +118,9 @@ if($action == 'deleteTeam'){
   }
   exit;
 }
-if($action == 'deleteUser'){
+if($action == 'deleteSpecialty'){
   $id = $data->id;
-  $result =  $conn->query("DELETE FROM user WHERE UserId =".$id);
+  $result =  $conn->query("DELETE FROM specialty WHERE ID =".$id);
   if ($result){
     echo "Delete successfully";
   }else{
@@ -115,6 +128,21 @@ if($action == 'deleteUser'){
   }
   exit;
 }
+
+
+if($action == 'deleteCity'){
+  $id = $data->id;
+  $result =  $conn->query("DELETE FROM cities WHERE Id =".$id);
+  if ($result){
+    echo "Delete successfully";
+  }else{
+    echo "Error";
+  }
+  exit;
+}
+
+
+
 $conn->close();
 header("Content-type: application/json");
 echo json_encode($res);

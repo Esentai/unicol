@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unicol Admin</title>
+    <!-- BOOTSTRAP STYLES-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLES-->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+    <link
+      href="http://fonts.googleapis.com/css?family=Open+Sans"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="js/vue.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="addCity">
+      <div id="wrapper">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="adjust-nav">
+            <div class="navbar-header">
+              <button
+                type="button"
+                class="navbar-toggle"
+                data-toggle="collapse"
+                data-target=".sidebar-collapse"
+              >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" style="height: 100%;" href="#">
+                <img src="../images/MainLogo.png" width="200" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="addSpecialty">
+          <div class="container">
+            <h2>Добавить город</h2>
+            <br />
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Название города</label>
+                <input
+                  required
+                  type="text"
+                  class="form-control"
+                  v-model="city.name"
+                  id="exampleFormControlInput1"
+                />
+              </div>
+
+              <br />
+              <button
+                type="button"
+                v-on:click="save"
+                class="btn btn-success btn-lg btn-block"
+              >
+                Добавить
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/addCity.js"></script>
+    <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+  </body>
+</html>

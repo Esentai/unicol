@@ -4,7 +4,8 @@ var app = new Vue({
     type: 'user',
     info: null,
     admin: true,
-    specialty: []
+    specialty: [],
+    cities: []
   },
 
   mounted: function() {
@@ -24,7 +25,7 @@ var app = new Vue({
           this.info = response.data;
           console.log(response.data);
           this.specialty = response.data.specialty;
-          //   this.replaceFun();
+          this.cities = response.data.cities;
         },
         error => {
           console.log(error);
@@ -32,51 +33,34 @@ var app = new Vue({
         }
       );
     },
-    replaceFun: function() {
-      console.log('replaceFun Run');
-      for (var i = 0; i < this.info.team.length; i++) {
-        this.info.team[i].name = this.info.team[i].name.split(',');
-        this.info.team[i].stage = this.info.team[i].stage.split(',');
-        this.info.team[i].distance = this.info.team[i].distance.split(',');
-        this.info.team[i].achievement = this.info.team[i].achievement.split(
-          ','
-        );
-        this.info.team[i].searchName = this.info.team[i].searchName.split(',');
-        this.info.team[i].searchDistance = this.info.team[
-          i
-        ].searchDistance.split(',');
-      }
-    },
-
-    deleteTeam: function(index, id) {
+    deleteSpecialty: function(index, id) {
       console.log('id:', id);
       console.log('index:', index);
-      console.log('data:', this.info.team);
+      console.log('data:', this.specialty);
       axios
-        .post('./api.php?action=deleteTeam', {
+        .post('/api.php?action=deleteSpecialty', {
           id: id
         })
         .then(function(response) {
           // Remove index from users
-          app.info.team.splice(index, 1);
+          app.specialty.splice(index, 1);
           alert(response.data);
         })
         .catch(function(error) {
           console.log(error);
         });
     },
-
-    deleteUser: function(index, id) {
+    deleteCity: function(index, id) {
       console.log('id:', id);
       console.log('index:', index);
-      console.log('data:', this.info.user);
+      console.log('data:', this.cities);
       axios
-        .post('./api.php?action=deleteUser', {
+        .post('/api.php?action=deleteCity', {
           id: id
         })
         .then(function(response) {
           // Remove index from users
-          app.info.user.splice(index, 1);
+          app.cities.splice(index, 1);
           alert(response.data);
         })
         .catch(function(error) {

@@ -16,73 +16,114 @@
       rel="stylesheet"
       type="text/css"
     />
+    <script src="js/vue.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <div id="wrapper">
-      <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="adjust-nav">
-          <div class="navbar-header">
-            <button
-              type="button"
-              class="navbar-toggle"
-              data-toggle="collapse"
-              data-target=".sidebar-collapse"
-            >
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" style="height: 100%;" href="#">
-              <img src="../images/MainLogo.png" width="200" />
-            </a>
-          </div>
-        </div>
-      </div>
-      <!-- /. NAV TOP  -->
-      <nav class="navbar-default navbar-side" role="navigation">
-        <div class="sidebar-collapse">
-          <ul class="nav" id="main-menu">
-            <li>
-              <a href="index.html"><i class="fa fa-desktop "></i>Dashboard</a>
-            </li>
-
-            <li>
-              <a href="ui.html"><i class="fa fa-table "></i>UI Elements </a>
-            </li>
-            <li class="active-link">
-              <a href="blank.html"><i class="fa fa-edit "></i>Blank Page </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <!-- /. NAV SIDE  -->
-      <div id="page-wrapper">
-        <div id="page-inner">
-          <div class="row">
-            <div class="col-md-12">
-              <h2>BLANK PAGE</h2>
+    <div id="admin">
+      <div id="wrapper">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="adjust-nav">
+            <div class="navbar-header">
+              <button
+                type="button"
+                class="navbar-toggle"
+                data-toggle="collapse"
+                data-target=".sidebar-collapse"
+              >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" style="height: 100%;" href="#">
+                <img src="../images/MainLogo.png" width="200" />
+              </a>
             </div>
           </div>
-          <!-- /. ROW  -->
-          <hr />
-
-          <!-- /. ROW  -->
         </div>
-        <!-- /. PAGE INNER  -->
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+          <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+              <li>
+                <a href="index.html"
+                  ><i class="fa fa-desktop "></i>Add specialty</a
+                >
+              </li>
+
+              <li>
+                <a href="ui.html"
+                  ><i class="fa fa-table "></i>Add universities</a
+                >
+              </li>
+              <li class="active-link">
+                <a href="blank.html"><i class="fa fa-edit "></i>Add cities </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+          <div id="page-inner">
+            <div class="row">
+              <div class="col-lg-12 specialtyTop ">
+                <h2>Cities</h2>
+                <div class="button_cont" align="center">
+                  <a
+                    class="example_a"
+                    href="./addCity.html"
+                    rel="nofollow noopener"
+                    >Add</a
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- /. ROW  -->
+            <hr />
+            <div class="container">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">name</th>
+                    <th scope="col">universities</th>
+                    <th scope="col">colleges</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(city,index) in cities">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ city.Name }}</td>
+                    <td>{{ city.universities }}</td>
+                    <td>{{ city.colleges }}</td>
+                    <td>
+                      <p title="Delete" class="deleteBtn">
+                        <button
+                          class="btn btn-danger btn-xs"
+                          v-on:click="deleteCity(index,city.Id)"
+                        >
+                          <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /. ROW  -->
+          </div>
+          <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
       </div>
-      <!-- /. PAGE WRAPPER  -->
-    </div>
-    <div class="footer">
-      <div class="row">
-        <div class="col-lg-12">
-          &copy; 2014 yourdomain.com | Design by:
-          <a href="http://binarytheme.com" style="color:#fff;" target="_blank"
-            >www.binarytheme.com</a
-          >
+      <div class="footer">
+        <div class="row">
+          <div class="col-lg-12"></div>
         </div>
       </div>
     </div>
-
+    <script src="js/admin.js"></script>
     <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->

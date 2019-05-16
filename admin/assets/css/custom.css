@@ -178,3 +178,10 @@ body {
   height: 50px;
   font-size: 17px;
 }
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.deleteBtn {
+  margin: 5px 0;
+}
