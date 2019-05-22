@@ -16,14 +16,17 @@ const vm = new Vue({
         universities: 'Университеты',
         colleges: 'Колледжи'
       },
-      citySelect: 'Kazakhstan'
+      citySelect: 'all',
+      mapDisplay: 'flex'
     };
   },
   computed: {
     filteredCity: function() {
       var category = this.citySelect;
-
-      if (category === 'Kazakhstan') {
+      // if (this.mapDisplay === 'none') {
+      //   this.selectCity(category);
+      // }
+      if (category === 'all') {
         return this.cities;
       } else {
         return this.cities.filter(function(city) {
@@ -143,30 +146,24 @@ const vm = new Vue({
     //   }
     // },
     selectCity: function(city) {
-      if (city === 'almaty') {
-        console.log('Start');
-        this.mainMap = ymaps.ready(() => {
-          const map = new window.ymaps.Map(
-            'main_content',
-            {
-              center: [48.136207, 60.15355], //50,15
-              zoom: 5,
-              controls: [],
-              strokeColor: '#FF0000'
-            },
-            {
-              restrictMapArea: [[61.937904, 5.559414], [30.397626, 101.184414]],
-              strokeColor: '#FF0000'
-            }
-          );
-          map.controls.add(
-            new ymaps.control.ZoomControl({
-              options: { position: { right: 10, top: 90 } }
-            })
-          );
-          map.behaviors.disable('scrollZoom');
+      console.log('Click', city);
+      this.mapDisplay = 'none';
+      this.citySelect = city.name_eng;
+      this.mainMap = ymaps.ready(() => {
+        const map = new window.ymaps.Map('main_content', {
+          center: [city.latitude, city.longitude], //50,15
+          zoom: 13,
+          controls: [],
+          strokeColor: '#FF0000'
         });
-      }
+        map.controls.add(
+          new ymaps.control.ZoomControl({
+            options: { position: { right: 10, top: 90 } }
+          })
+        );
+
+        map.behaviors.disable('scrollZoom');
+      });
     }
   }
 });

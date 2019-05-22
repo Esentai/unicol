@@ -43,7 +43,7 @@
         </div>
         <div class="addSpecialty">
           <div class="container">
-            <h2>Добавить специальность</h2>
+            <h2>Добавить факультет</h2>
             <br />
             <form>
               <div class="form-group">
@@ -54,7 +54,7 @@
                   required
                   type="text"
                   class="form-control"
-                  v-model="specialty.name_kaz"
+                  v-model="faculty.name_kaz"
                   id="exampleFormControlInput1"
                 />
               </div>
@@ -66,7 +66,7 @@
                   required
                   type="text"
                   class="form-control"
-                  v-model="specialty.name_rus"
+                  v-model="faculty.name_rus"
                   id="exampleFormControlInput1"
                 />
               </div>
@@ -78,27 +78,75 @@
                   required
                   type="text"
                   class="form-control"
-                  v-model="specialty.name_eng"
+                  v-model="faculty.name_eng"
                   id="exampleFormControlInput1"
                 />
               </div>
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Код</label>
-                <input
-                  required
-                  type="number"
-                  class="form-control"
-                  v-model="specialty.code"
-                  id="exampleFormControlInput1"
-                />
+
+              <div class="itemSpecialty" v-for="item in faculty.specialty">
+                <div class="form-group">
+                  <label for="exampleFormControlInput1"
+                    >Название на русском</label
+                  >
+                  <input
+                    required
+                    type="text"
+                    class="form-control"
+                    v-model="item.name_rus"
+                    id="exampleFormControlInput1"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1"
+                    >Название на английском</label
+                  >
+                  <input
+                    required
+                    type="text"
+                    class="form-control"
+                    v-model="item.name_eng"
+                    id="exampleFormControlInput1"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1"
+                    >Название на казахском</label
+                  >
+                  <input
+                    required
+                    type="text"
+                    class="form-control"
+                    v-model="item.name_kaz"
+                    id="exampleFormControlInput1"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Код</label>
+                  <input
+                    required
+                    type="number"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    v-model="item.code"
+                  />
+                </div>
               </div>
+              <br />
+              <button
+                type="button"
+                v-on:click="addSpecialty"
+                class="btn btn-primary "
+              >
+                Добавить специальность
+              </button>
+              <br />
               <br />
               <button
                 type="submit"
                 v-on:click="save"
                 class="btn btn-success btn-lg btn-block"
               >
-                Добавить
+                Сохранить
               </button>
             </form>
           </div>

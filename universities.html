@@ -87,20 +87,20 @@
           </div>
         </div>
       </nav>
-      <div class="main_content">     
-         <div id="map">
-           <div v-for="city in filteredCity" :key="cities.Id">
-              <button v-on:click="selectCity(city.name_eng)" class="mapPlacemark" :class="[city.name_eng]">
+      <div  id='main_content' class="main_content">     
+         <div  v-bind:style="{ display: mapDisplay}" id="map">
+           <di0v v-for="city in filteredCity" :key="cities.Id">
+              <button v-on:click="selectCity(city)" class="mapPlacemark" :class="[city.name_eng]">
                   {{city.universities}}
                 </button>
            </div>
       </div>
       <div class="filter">
         <div class="form-group">
-          <label for="exampleFormControlSelect1">Выберите город {{citySelect}}</label>
+          <label for="exampleFormControlSelect1">Выберите город</label>
           <select class="form-control" @change="filteredCity()" v-model="citySelect" id="exampleFormControlSelect1">
-              <option value="Kazakhstan">
-                  Казахстан
+              <option value="all">
+                  все города
                 </option>
             <option v-for="city in cities" v-bind:value="city.name_eng">
               {{ city.name_rus }}

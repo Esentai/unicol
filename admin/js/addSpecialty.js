@@ -4,33 +4,54 @@ var app = new Vue({
     info: null,
 
     counter: 0,
-    specialty: {
+
+    faculty: {
       name_kaz: '',
       name_rus: '',
       name_eng: '',
-      code: null
+      specialty: []
     }
   },
 
   mounted: function() {},
 
   methods: {
+    addSpecialty: function() {
+      this.faculty.specialty.push({
+        name_kaz: '',
+        name_rus: '',
+        name_eng: '',
+        code: null
+      });
+    },
     save: function() {
       console.log('OK');
-      console.log(this.specialty);
+      var specialty_kaz = [];
+      var specialty_rus = [];
+      var specialty_eng = [];
+      var specialty_code = [];
+      for (var i = 0; i < this.faculty.specialty.length; i++) {
+        specialty_kaz.push(this.faculty.specialty[i].name_kaz);
+        specialty_rus.push(this.faculty.specialty[i].name_rus);
+        specialty_eng.push(this.faculty.specialty[i].name_eng);
+        specialty_code.push(this.faculty.specialty[i].code);
+      }
       if (
-        this.specialty.name_kaz &&
-        this.specialty.name_rus &&
-        this.specialty.name_eng &&
-        this.specialty.code
+        this.faculty.name_kaz &&
+        this.faculty.name_rus &&
+        this.faculty.name_eng
       ) {
-        var newSpecialty = {
-          name_kaz: this.specialty.name_kaz,
-          name_rus: this.specialty.name_rus,
-          name_eng: this.specialty.name_eng,
-          code: this.specialty.code
+        var newfaculty = {
+          name_kaz: this.faculty.name_kaz,
+          name_rus: this.faculty.name_rus,
+          name_eng: this.faculty.name_eng,
+          specialty_kaz: specialty_kaz,
+          specialty_rus: specialty_rus,
+          specialty_eng: specialty_eng,
+          specialty_code: specialty_code
         };
-        var formData = this.toFromData(newSpecialty);
+        console.log('Data:', newfaculty);
+        var formData = this.toFromData(newfaculty);
         axios
           .post('/api.php?action=newSpecialty', formData)
           .then(function(response) {

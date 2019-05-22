@@ -51,8 +51,12 @@ if ($action == 'newSpecialty'){
   $name_kaz = $_POST['name_kaz'];
   $name_rus = $_POST['name_rus'];
   $name_eng = $_POST['name_eng'];
-  $code = $_POST['code'];
-  $result = $conn->query("INSERT INTO `specialty` (`ID`, `name_kaz`, `name_rus`, `name_eng`, `code`) VALUES (NULL, '$name_kaz', '$name_rus', '$name_eng', '$code')");
+  $specialty_kaz = $_POST['specialty_kaz'];
+  $specialty_rus = $_POST['specialty_rus'];
+  $specialty_eng = $_POST['specialty_eng'];
+  $specialty_code = $_POST['specialty_code'];
+
+  $result = $conn->query("INSERT INTO `specialty` (`ID`, `name_kaz`, `name_rus`, `name_eng`, `specialty_kaz`, `specialty_rus`, `specialty_eng`, `specialty_code`) VALUES (NULL, '$name_kaz', '$name_rus', '$name_eng', '$specialty_kaz', '$specialty_rus', '$specialty_eng', '$specialty_code')");
   if ($result) {
     $res['message'] = "User added successfully";
   } else{
