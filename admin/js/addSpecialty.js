@@ -7,7 +7,8 @@ var app = new Vue({
     specialty: {
       name_kaz: '',
       name_rus: '',
-      name_eng: ''
+      name_eng: '',
+      code: null
     }
   },
 
@@ -20,12 +21,14 @@ var app = new Vue({
       if (
         this.specialty.name_kaz &&
         this.specialty.name_rus &&
-        this.specialty.name_eng
+        this.specialty.name_eng &&
+        this.specialty.code
       ) {
         var newSpecialty = {
           name_kaz: this.specialty.name_kaz,
           name_rus: this.specialty.name_rus,
-          name_eng: this.specialty.name_eng
+          name_eng: this.specialty.name_eng,
+          code: this.specialty.code
         };
         var formData = this.toFromData(newSpecialty);
         axios

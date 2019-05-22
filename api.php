@@ -30,9 +30,12 @@ if ($action == 'read'){
 }
 
 
-if($action == 'newCity'){
-  $Name = $_POST['Name'];
-  $result = $conn->query("INSERT INTO `cities` (`Id`, `Name`) VALUES (NULL, '$Name')");
+
+if ($action == 'newCity'){
+  $name_kaz = $_POST['name_kaz'];
+  $name_rus = $_POST['name_rus'];
+  $name_eng = $_POST['name_eng'];
+  $result = $conn->query("INSERT INTO `cities` (`ID`, `name_kaz`, `name_rus`, `name_eng`) VALUES (NULL, '$name_kaz', '$name_rus', '$name_eng')");
   if ($result) {
     $res['message'] = "User added successfully";
   } else{
@@ -43,11 +46,13 @@ if($action == 'newCity'){
 }
 
 
+
 if ($action == 'newSpecialty'){
   $name_kaz = $_POST['name_kaz'];
   $name_rus = $_POST['name_rus'];
   $name_eng = $_POST['name_eng'];
-  $result = $conn->query("INSERT INTO `specialty` (`ID`, `name_kaz`, `name_rus`, `name_eng`) VALUES (NULL, '$name_kaz', '$name_rus', '$name_eng')");
+  $code = $_POST['code'];
+  $result = $conn->query("INSERT INTO `specialty` (`ID`, `name_kaz`, `name_rus`, `name_eng`, `code`) VALUES (NULL, '$name_kaz', '$name_rus', '$name_eng', '$code')");
   if ($result) {
     $res['message'] = "User added successfully";
   } else{

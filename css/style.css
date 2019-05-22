@@ -1,5 +1,8 @@
 body {
   position: relative;
+  background: url('../images/background.png') center center;
+  height: 100vh;
+  width: 100%;
 }
 .body_content {
   margin-top: 80px;
@@ -13,15 +16,15 @@ body {
   background-color: #5290ca;
 
   border-radius: 10px;
-  width: 270px;
-  height: 60px;
+  width: 315px;
+  height: 75px;
   margin-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .select a {
-  font-size: 32px;
+  font-size: 38px;
   color: #ffffff;
 }
 
@@ -32,13 +35,17 @@ body {
   opacity: 0.9;
 }
 .mainLogo {
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .language {
   position: absolute;
-  right: 30px;
+  right: 60px;
   top: 15px;
+}
+.btn:hover {
+  color: #ffffff;
+  text-decoration: none;
 }
 .dropdown-toggle,
 .dropdown-toggle:focus,
@@ -50,7 +57,7 @@ body {
   outline: none;
   background-color: transparent;
   cursor: pointer;
-  color: #000000;
+  color: #ffffff;
 }
 .dropdown-menu {
   border: none;
@@ -58,10 +65,16 @@ body {
 .languages_icon {
   width: 35px;
 }
+.sdelay {
+  margin-top: 20px;
+}
 
 @media (max-width: 768px) {
   .mainLogo {
     width: 300px;
+  }
+  .sdelay {
+    width: 350px;
   }
 }
 
@@ -69,16 +82,25 @@ body {
   .mainLogo {
     width: 500px;
   }
+  .sdelay {
+    width: 650px;
+  }
 }
 
 @media (min-width: 992px) {
   .mainLogo {
     width: 500px;
   }
+  .sdelay {
+    width: 750px;
+  }
 }
 
 @media (min-width: 1200px) {
   .mainLogo {
     width: 500px;
+  }
+  .sdelay {
+    width: 750px;
   }
 }

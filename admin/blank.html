@@ -36,7 +36,7 @@
                 <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand" style="height: 100%;" href="#">
-                <img src="../images/MainLogo.png" width="200" />
+                <img src="../images/MainLogo.png" width="130" />
               </a>
             </div>
           </div>
@@ -85,7 +85,9 @@
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">name</th>
+                    <th scope="col">name_rus</th>
+                    <th scope="col">name_kaz</th>
+                    <th scope="col">name_eng</th>
                     <th scope="col">universities</th>
                     <th scope="col">colleges</th>
                     <th>Delete</th>
@@ -94,7 +96,9 @@
                 <tbody>
                   <tr v-for="(city,index) in cities">
                     <td>{{ index + 1 }}</td>
-                    <td>{{ city.Name }}</td>
+                    <td>{{ city.name_rus }}</td>
+                    <td>{{ city.name_kaz }}</td>
+                    <td>{{ city.name_eng }}</td>
                     <td>{{ city.universities }}</td>
                     <td>{{ city.colleges }}</td>
                     <td>

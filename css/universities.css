@@ -1,3 +1,78 @@
+body {
+  background-image: url('../images/mapBackground.png');
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.main_content {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+#map {
+  background-image: url('../images/map.png');
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+  min-width: 1140px;
+  height: 650px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+}
+
+.mapPlacemark {
+  position: absolute;
+  width: 70px;
+  padding-bottom: 24px;
+  font-size: 12px;
+  height: 70px;
+  text-align: center;
+  background: url('../images/placemark.png') center center no-repeat;
+  background-size: cover;
+  border: none;
+}
+.mapPlacemark:active,
+.mapPlacemark:focus,
+.mapPlacemark:visited {
+  outline: none;
+}
+.mapPlacemark:hover {
+  cursor: pointer;
+  outline: none;
+}
+
+.Almaty {
+  right: 289px;
+  top: 420px;
+}
+.Aktau {
+  right: 929px;
+  top: 405px;
+}
+.Nur-Sultan {
+  right: 408px;
+  top: 102px;
+}
+.Aktobe {
+  right: 777px;
+  top: 163px;
+}
+.Kyzylorda {
+  right: 550px;
+  top: 405px;
+}
+.Uralsk {
+  right: 925px;
+  top: 128px;
+}
+.Ust-Kamenogorsk {
+  right: 148px;
+  top: 175px;
+}
 .navigation {
   height: 60px;
   background-color: #e5f2ff;
@@ -37,7 +112,7 @@
   align-items: center;
   justify-content: center;
   background-color: #4a78a8;
-  border-radius: 10px;
+  border-radius: 60px;
   padding-top: 5px;
 }
 .youtube {
@@ -52,7 +127,7 @@
   align-items: center;
   justify-content: center;
   background-color: #ff0000;
-  border-radius: 10px;
+  border-radius: 60px;
 }
 .vk:hover,
 .insta:hover,
@@ -98,7 +173,7 @@
     #bc1888 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
-  border-radius: 10px;
+  border-radius: 60px;
 }
 .dropdown-menu {
   border: none;
@@ -129,6 +204,7 @@
   background-color: #fff;
   padding: 30px 20px;
   min-width: 400px;
+  border-radius: 15px;
 }
 .form-control {
   width: 400px;

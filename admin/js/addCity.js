@@ -5,7 +5,9 @@ var app = new Vue({
 
     counter: 0,
     city: {
-      name: ''
+      name_kaz: '',
+      name_rus: '',
+      name_eng: ''
     }
   },
 
@@ -14,9 +16,19 @@ var app = new Vue({
   methods: {
     save: function() {
       console.log('OK');
-      if (this.city.name) {
+      console.log(
+        this.city.name_kaz,
+        ' ',
+        this.city.name_eng,
+        ' ',
+        this.city.name_rus,
+        ' '
+      );
+      if (this.city.name_rus) {
         var newCity = {
-          Name: this.city.name
+          name_kaz: this.city.name_kaz,
+          name_eng: this.city.name_eng,
+          name_rus: this.city.name_rus
         };
         var formData = this.toFromData(newCity);
         axios

@@ -37,7 +37,7 @@
         >
           {{ lang }} <img class="languages_icon" v-bind:src="lang_img" alt="" />
         </button>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu" style="background: transparent;">
           <button
             v-show="lang != 'Qaz'"
             v-on:click="changeLanguage('qaz')"
@@ -68,6 +68,8 @@
         <a href="#!"
           ><img class="mainLogo" src="images/MainLogo.png" alt=""
         /></a>
+        <br />
+        <img src="images/Sdelay.png" class="sdelay" alt="" />
         <div class="row body_content text-center">
           <div class="col-md-6 text-center">
             <div class="select text-center">
