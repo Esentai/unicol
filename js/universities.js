@@ -3,11 +3,12 @@ const vm = new Vue({
 
   data: () => {
     return {
-      myMap: {},
+      myMap: null,
       mainMap: null,
       info: null,
       cities: [],
       specialty: [],
+      universities: [],
       msg: 'Some msg',
       counter: 0,
       lang: 'Рус',
@@ -17,7 +18,11 @@ const vm = new Vue({
         colleges: 'Колледжи'
       },
       citySelect: 'all',
-      mapDisplay: 'flex'
+      mapDisplay: 'flex',
+      select: {
+        city: false
+      },
+      backbtn: 'none'
     };
   },
   computed: {
@@ -109,6 +114,7 @@ const vm = new Vue({
           this.info = response.data;
           this.cities = response.data.cities;
           this.specialty = response.data.specialty;
+          this.universities = response.data.universities;
           console.log(this.cities);
           // if (this.cities) {
           //   this.addPlacemark(this.cities);
@@ -148,11 +154,12 @@ const vm = new Vue({
     selectCity: function(city) {
       console.log('Click', city);
       this.mapDisplay = 'none';
+      this.backbtn = 'flex';
       this.citySelect = city.name_eng;
       this.mainMap = ymaps.ready(() => {
         const map = new window.ymaps.Map('main_content', {
           center: [city.latitude, city.longitude], //50,15
-          zoom: 13,
+          zoom: 12,
           controls: [],
           strokeColor: '#FF0000'
         });
@@ -161,9 +168,42 @@ const vm = new Vue({
             options: { position: { right: 10, top: 90 } }
           })
         );
-
+        for (let i = 0; i < this.universities.length; i++) {
+          if (this.universities[i].city === city.name_rus) {
+            console.log('If Check');
+            myPlacemark = new ymaps.Placemark(
+              [this.universities[i].latitude, this.universities[i].longitude],
+              {
+                iconCaption: 'поиск...'
+              },
+              {
+                iconLayout: 'default#image',
+                iconImageHref: '../images/placemark.png',
+                iconImageSize: [50, 50],
+                iconImageOffset: [-20, -50],
+                draggable: false
+              }
+            );
+            myPlacemark.events.add('click', function(e) {
+              // Получение координат щелчка
+              var coords = e.get('coords');
+              alert(coords.join(', '));
+            });
+            map.geoObjects.add(myPlacemark);
+          }
+        }
+        this.myMap = map;
         map.behaviors.disable('scrollZoom');
+        this.select.city = true;
       });
+    },
+
+    backBtn: function() {
+      this.backbtn = 'none';
+      this.mapDisplay = 'flex';
+      this.select.city = false;
+      this.citySelect = 'all';
+      this.myMap.destroy();
     }
   }
 });

@@ -28,6 +28,16 @@ if ($action == 'read'){
   }
   $res['specialty'] = $competition;
 }
+if ($action == 'read'){
+  $result = $conn->query("SELECT * FROM `universities`");
+  $competition = array();
+  while($row = $result->fetch_assoc()){
+    array_push($competition, $row);
+  }
+  $res['universities'] = $competition;
+}
+
+
 
 
 

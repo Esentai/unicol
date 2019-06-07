@@ -83,15 +83,9 @@
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">ID</th>
-
-                    <th scope="col">name_kaz</th>
-                    <th scope="col">name_rus</th>
-                    <th scope="col">name_eng</th>
-                    <th scope="col">specialty_kaz</th>
-                    <th scope="col">specialty_rus</th>
-                    <th scope="col">specialty_eng</th>
-
-                    <th scope="col">specialty_code</th>
+                    <th scope="col">name</th>
+                    <th scope="col">specialty name</th>
+                    <th scope="col">specialty code</th>
                     <th>Delete</th>
                   </tr>
                 </thead>
@@ -99,12 +93,10 @@
                   <tr v-for="(spec,index) in specialty">
                     <td>{{ index + 1 }}</td>
 
-                    <td>{{ spec.name_kaz }}</td>
                     <td>{{ spec.name_rus }}</td>
-                    <td>{{ spec.name_eng }}</td>
-                    <td>{{ spec.specialty_kaz }}</td>
+
                     <td>{{ spec.specialty_rus }}</td>
-                    <td>{{ spec.specialty_eng }}</td>
+
                     <td>{{ spec.specialty_code }}</td>
                     <td>
                       <p title="Delete" class="deleteBtn">

@@ -40,9 +40,10 @@
   <body>
     <div id="root">
       <nav class="navigation">
-        <div class="container navigation_content">
+        <div class=" navigation_content">
           <a href="./"><img src="images/MainLogo.png" height="55" alt=""/></a>
-          <a href="#!" class="navigation_content_title">Абитуриенту</a>
+          <input type="text" class="searchInput" autocomplete="off" name="search" placeholder="Search..">
+          <a href="#!" class="navigation_content_title 	d-none d-md-block ">Абитуриенту</a>
           <div class="dropdown language">
             <button
               class="btn dropdown-toggle"
@@ -89,16 +90,21 @@
       </nav>
       <div  id='main_content' class="main_content">     
          <div  v-bind:style="{ display: mapDisplay}" id="map">
-           <di0v v-for="city in filteredCity" :key="cities.Id">
+           <div v-for="city in filteredCity" :key="cities.Id">
               <button v-on:click="selectCity(city)" class="mapPlacemark" :class="[city.name_eng]">
                   {{city.universities}}
                 </button>
            </div>
       </div>
+      <div class="search">
+        <div class="form-group">
+          <input type="text" class="js-input-to form-control" value="0" />
+        </div>
+      </div>
       <div class="filter">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Выберите город</label>
-          <select class="form-control" @change="filteredCity()" v-model="citySelect" id="exampleFormControlSelect1">
+          <select :disabled="select.city" class="form-control" @change="filteredCity()" v-model="citySelect" id="exampleFormControlSelect1">
               <option value="all">
                   все города
                 </option>
@@ -108,7 +114,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="exampleFormControlSelect1">Специальность</label>
+          <label for="exampleFormControlSelect1">Факультет </label>
           <select class="form-control"  id="exampleFormControlSelect1">
             <option
               v-for="specialtyName in specialty"
@@ -159,13 +165,25 @@
           <input type="checkbox" />
           <span class="checkmark"></span>
         </label>
+        <button  v-bind:style="{ display: backbtn}" v-on:click="backBtn" class="backBtn"> <i class="fas fa-chevron-left"></i> Назад</button>
+        </div>
+        <div class="info">
+          <div class="infoBody">
+            <button class="closeBtn"><i class="fas fa-times"></i></button>
+            <h3 class="info_title">Международный университет информационных технологий</h3>
+            <p>Сегодня 09:00–18:00, обед 13:00–14:00</p>
+            <p>г. Алматы, ул. Манаса/ Жандосова, 34 «А»/8 «А»</p>
+            <p>Телефон: <a href="tel:">+7 (727) 330-85-60</a></p>
+            <p>Почта: <a href="email">info@iitu.kz</a></p>
+            
+          </div>
         </div>
       </div>
     </div>
 
     
       <a target="_blank" class="vk" href="https://vk.com"><i class="fab fa-vk"></i></a>
-      <a target="_blank" class="insta" href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+      <a target="_blank" class="insta" href="https://www.instagram.com/unicol.kz/"><i class="fab fa-instagram"></i></a>
       <a target="_blank" class="youtube" href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
     </div>
     <script src="js/universities.js"></script>

@@ -78,7 +78,7 @@ body {
   height: 60px;
   background-color: #e5f2ff;
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   position: absolute;
   top: 0;
@@ -91,6 +91,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 93%;
 }
 .navigation_content_title {
   font-size: 26px;
@@ -197,13 +198,23 @@ body {
   cursor: pointer;
   color: #5290ca;
 }
-
+.search {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 40px;
+  background-color: #fff;
+  padding: 25px 20px;
+  min-width: 400px;
+  border-radius: 15px;
+  z-index: 1;
+}
 .filter {
   position: absolute;
   top: 75px;
   left: 40px;
   background-color: #fff;
-  padding: 30px 20px;
+  padding: 25px 20px;
   min-width: 400px;
   border-radius: 15px;
   z-index: 1;
@@ -614,4 +625,79 @@ select option {
 }
 .js-input-from {
   margin: 0 10px 0 0;
+}
+
+.backBtn {
+  background: transparent;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+  font-size: 20px;
+}
+.backBtn:hover {
+  opacity: 0.85;
+}
+.backBtn:focus {
+  outline: none;
+}
+.backBtn i {
+  margin-right: 5px;
+  margin-top: 3.2px;
+}
+
+.searchInput {
+  position: absolute;
+  top: 8px;
+  left: 200px;
+  width: 230px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 7px 15px 7px 20px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.5s ease-in-out;
+}
+
+.searchInput:focus {
+  width: 340px;
+  outline: none;
+}
+
+.info {
+  display: none;
+  position: absolute;
+  top: 75px;
+  left: 510px;
+  background-color: #fff;
+  padding: 25px 20px;
+  width: 400px;
+  border-radius: 15px;
+  z-index: 1;
+  max-height: 600px;
+  overflow-y: auto;
+}
+.infoBody {
+  position: relative;
+}
+.closeBtn {
+  position: absolute;
+  right: -10px;
+  top: -15px;
+  background: transparent;
+  border: none;
+}
+.closeBtn:focus {
+  outline: none;
+}
+.info_title {
+  font-size: 18px;
+  text-align: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #000000;
 }
