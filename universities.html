@@ -101,7 +101,7 @@
           <input type="text" class="js-input-to form-control" value="0" />
         </div>
       </div>
-      <div class="filter">
+      <div class="filter" v-if="filter">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Выберите город</label>
           <select :disabled="select.city" class="form-control" @change="filteredCity()" v-model="citySelect" id="exampleFormControlSelect1">
@@ -167,16 +167,66 @@
         </label>
         <button  v-bind:style="{ display: backbtn}" v-on:click="backBtn" class="backBtn"> <i class="fas fa-chevron-left"></i> Назад</button>
         </div>
-        <div class="info">
+        <div class="info"  v-if="!filter">
           <div class="infoBody">
-            <button class="closeBtn"><i class="fas fa-times"></i></button>
-            <h3 class="info_title">Международный университет информационных технологий</h3>
-            <p>Сегодня 09:00–18:00, обед 13:00–14:00</p>
-            <p>г. Алматы, ул. Манаса/ Жандосова, 34 «А»/8 «А»</p>
-            <p>Телефон: <a href="tel:">+7 (727) 330-85-60</a></p>
-            <p>Почта: <a href="email">info@iitu.kz</a></p>
-            
+            <!-- <button class="closeBtn"><i class="fas fa-times"></i></button> -->
+            <h3 class="info_title">{{this_universities.name}}</h3>
+            <div class="info_section">
+              <p class="info_section_text">{{this_universities.address}}</p>
+              <p class="info_section_text">Телефон: <a href="tel:">{{this_universities.telephone}}</a></p>
+              <p class="info_section_text">Сайт: <a target="_blank" v-bind:href="this_universities.webSite">{{this_universities.webSite}}</a></p>
+            </div>
+            <div class="info_section2">
+              <p class="info_section2_text">Минимальная стоимость: <span>{{this_universities.minPrice}}₸</span></p>
+              <p class="info_section2_text">Языки обучения: <span>{{this_universities.learningLanguages}} </span> </p>
+            </div>
+            <div  class="info_section3">
+              <button class="checkboxBtn"  v-on:click="warn('1', $event)">
+                <label  class="checkbox_container info_section3_checkbox"
+                >Общежитие
+                <input type="checkbox" v-model="this_universities.hostel" disabled/>
+                <span class="checkmark"></span>
+              </label>
+              </button>
+              <button class="checkboxBtn"  v-on:click="warn('2', $event)">
+            <label class="checkbox_container info_section3_checkbox"
+              >Военная кафедра
+              <input type="checkbox"  v-model="this_universities.militaryDepartment" disabled/>
+              <span class="checkmark"></span>
+            </label>
+          </button>
+          <button class="checkboxBtn" v-on:click="warn('3', $event)">
+            <label  class="checkbox_container info_section3_checkbox"
+              >Гранты
+              <input type="checkbox"  v-model="this_universities.grants" disabled />
+              <span class="checkmark"></span>
+            </label>
+          </button>
+            </div>
+            <div class="info_section4">
+              <div class="row buttons">
+                <div class="col-6"><button class="videoBtn">Видео</button></div>
+                <div class="col-6"><button class="photoBtn">Фото</button></div>
+              </div>
+              
+            </div>
+            <div>
+              <button class="compareBtn">Добавить к сравнению</button>
+            </div>
+            <button  v-bind:style="{ display: backbtn}" disabled v-on:click="infoBodyBackBtn" class="backBtn"> <i class="fas fa-chevron-left"></i> Назад</button>
           </div>
+        </div>
+        <div class="moreInfo" v-bind:style="{ display: militaryDepartment}">
+            <h3>Военная кафедра</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque repudiandae molestiae laudantium qui corrupti impedit labore nihil et at necessitatibus.</p>
+        </div>
+        <div class="moreInfo" v-if="moreInfo.grants">
+            <h3>Гранты</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque repudiandae molestiae laudantium qui corrupti impedit labore nihil et at necessitatibus.</p>
+        </div>
+        <div class="moreInfo" v-if="moreInfo.hostel">
+            <h3>Общежитие</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque repudiandae molestiae laudantium qui corrupti impedit labore nihil et at necessitatibus.</p>
         </div>
       </div>
     </div>

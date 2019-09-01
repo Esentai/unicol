@@ -22,7 +22,15 @@ const vm = new Vue({
       select: {
         city: false
       },
-      backbtn: 'none'
+      backbtn: 'none',
+      filter: true,
+      this_universities: [],
+      index: null,
+      militaryDepartment: 'none',
+      moreInfo: {
+        grants: false,
+        hostel: false
+      }
     };
   },
   computed: {
@@ -184,11 +192,9 @@ const vm = new Vue({
                 draggable: false
               }
             );
-            myPlacemark.events.add('click', function(e) {
-              // Получение координат щелчка
-              var coords = e.get('coords');
-              alert(coords.join(', '));
-            });
+            this.this_universities = this.universities[i];
+            this.index = i;
+            myPlacemark.events.add('click', this.up, this);
             map.geoObjects.add(myPlacemark);
           }
         }
@@ -198,12 +204,41 @@ const vm = new Vue({
       });
     },
 
+    up: function() {
+      console.log('Ok!');
+      console.log('Index:', this.index);
+      console.log(this.this_universities);
+      this.filter = false;
+    },
+
     backBtn: function() {
       this.backbtn = 'none';
       this.mapDisplay = 'flex';
       this.select.city = false;
       this.citySelect = 'all';
       this.myMap.destroy();
+    },
+    infoBodyBackBtn: function() {
+      this.filter = true;
+    },
+    moreInfo: function() {
+      console.log('select');
+    },
+    greet: function(event, number) {
+      // // `this` внутри методов указывает на экземпляр Vue
+      // alert('Привет, ' + this.name + '!');
+      // // `event` — нативное событие DOM
+      // if (event) {
+      //   alert(event.target.tagName);
+      // }
+      console.log('select', number);
+    },
+    warn: function(message, event) {
+      if (message == '1') {
+        console.log('Ok!');
+        this.militaryDepartment = 'block';
+      }
+      console.log(message);
     }
   }
 });
